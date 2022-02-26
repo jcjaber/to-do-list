@@ -3,20 +3,6 @@ const taskList = document.getElementById('task-list');
 
 let tasks = [];
 
-const handleDeleteClick = (targetTask) => {
-  const filtered = tasks.filter((task) => {
-   return task != targetTask;
-  });
-  tasks = filtered;
-  updateListView();
- }
-
-
-const handleCheckboxChange = (targetTask) => {
-  targetTask.isDone = !targetTask.isDone;
-  updateListView();
-}
-
 const clearListView = () => {
   const children = [...taskList.children];
   children.forEach((child) => {
@@ -51,6 +37,43 @@ const updateListView = () => {
   })
 }
 
+const loadFromLocalStorage = () => {
+  const savedData = localStorage.getItem('tasks');
+
+   if(savedData === null) {
+     return;
+   }
+
+   const parsedData = JSON.parse(savedData);
+   tasks = parsedData;
+
+   updateListView();
+}
+
+loadFromLocalStorage();
+
+const saveToLocalStorage = () => {
+  const parsedData = JSON.stringify(tasks);
+  localStorage.setItem('tasks', parsedData)
+}
+
+const handleDeleteClick = (targetTask) => {
+  const filtered = tasks.filter((task) => {
+   return task != targetTask;
+  });
+  tasks = filtered;
+
+  saveToLocalStorage();
+  updateListView();
+ }
+
+const handleCheckboxChange = (targetTask) => {
+  targetTask.isDone = !targetTask.isDone;
+
+  saveToLocalStorage();
+  updateListView();
+}
+
 const handleSubmit = (event) => {
   event.preventDefault();
 
@@ -65,6 +88,8 @@ const handleSubmit = (event) => {
   }
 
   tasks.push(newTask);
+  saveToLocalStorage();
+
   updateListView();
 }
 
