@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="To-do List">
   <link rel="stylesheet" href="style.css">
   <title>To-do List</title>
 </head>
@@ -12,8 +13,10 @@
   <div>
     <h2>Create new task</h2>
     <form id="new-task-form">
-      <input name="title">
-      <textarea name="description"></textarea>
+      <label for="title">Title: </label>
+      <input id="title" name="title">
+      <label for="description">Description: </label>
+      <textarea id="description" name="description"></textarea>
       <button type="submit">Create</button>
       <button type="reset">Reset</button>
     </form>
