@@ -6,25 +6,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="To-do List">
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <title>To-do List</title>
 </head>
 <body>
-  <h1>To-do List</h1>
-  <div>
-    <h2>Create new task</h2>
-    <form id="new-task-form">
-      <label for="title">Title: </label>
-      <input id="title" name="title">
-      <label for="description">Description: </label>
-      <textarea id="description" name="description"></textarea>
-      <button type="submit">Create</button>
-      <button type="reset">Reset</button>
-    </form>
-    <div>
-      <h2>Tasks</h2>
-      <ul id="task-list"></ul>
+  <header class="header">
+    <p>Menu</p>
+    <h1>To-do List</h1>
+    <p>Github</p>
+  </header>
+  <main class="main">
+    <div class="container">
+
+      <div id="new-task-popup" class="new-task-popup">
+        <div class="new-task-popup-container">
+          <div class="new-task-popup-header">
+            <h2>Nova Tarefa</h2>
+            <button id="button-new-task-popup-close" onclick="toggleNewTaskPopUp()">X</button>
+          </div>
+          <form id="new-task-form" class="new-task-form">
+            <label for="title">Título: </label>
+            <input id="title" name="title" required>
+            <label for="description">Descrição: </label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+            <button type="submit">Salvar</button>
+          </form>
+        </div>
+      </div>
+      <div>
+        <div class="tasks-header">
+          <h2>Tasks</h2>
+          <button id="button-new-task" onclick="toggleNewTaskPopUp()">Nova Tarefa</button>
+        </div>
+
+        <ul id="task-list" class="task-list"></ul>
+      </div>
     </div>
-  </div>
+  </main>
+
   <script src="script.js"></script>
 </body>
 </html>

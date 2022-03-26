@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #F6F8FA;
+}
+
+button {
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  padding: 8px;
+  margin: 5px 0;
+  font-size: medium;
+  cursor: pointer;
+}
+
+
+.button-delete {
+  padding: 0;
+  margin: 0;
+  font-size: small;
+  padding: 5px;
+}
+
+input {
+  padding: 10px;
+  font-size: medium;
+  margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+  margin-bottom: 0px;
+  margin-right: 5px;
+}
+textarea {
+  resize: none;
+  margin-bottom: 5px;
+  padding: 8px;
+  font-size: medium;
+  box-sizing: border-box;
+}
+
+
+
+.header {
+  align-items: center;
+  background-color: red;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.main {
+  margin: 0px auto;
+  max-width: 992px;
+}
+
+.container {
+  padding: 0px 10px;
+}
+
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-task-popup {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 100px 10px;
+  display: none;
+  background-color: rgba(0, 0 , 0, 0.3);
+}
+
+.new-task-popup-container {
+  padding: 15px;
+  width: 400px;
+  background-color: white;
+  margin: 0px auto;
+  height: fit-content;
+}
+
+.new-task-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  border-bottom: solid 1px #d0d7de;
+}
+
+.new-task-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.tasks-list-header {
+  display: flex;
+  align-items: center;
+}
+
+.task-list {
+  list-style: none;
+}
+
+.task-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 3px;
+  border: solid 1px #d0d7de;
+  transition: background-color 100ms ease-in-out;
+}
+
+.task-list-item:hover {
+  background-color: #F6F8FA;
+}
+
+
+@media (max-width: 576) {
+  .new-task-popup-container {
+    width: auto;
+  }
+}

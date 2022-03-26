@@ -1,7 +1,9 @@
 const newTaskForm = document.getElementById('new-task-form');
 const taskList = document.getElementById('task-list');
+const newTaskPopUp = document.getElementById('new-task-popup');
 
 let tasks = [];
+let showNewTaskPopUp = false;
 
 const clearListView = () => {
   const children = [...taskList.children];
@@ -16,14 +18,11 @@ const updateListView = () => {
 
   tasks.forEach((task) => {
     const listItem = document.createElement('li');
-    listItem.textContent = task.title;
+    listItem.classList.add('task-list-item');
 
-    const buttonDelete = document.createElement('button');
-    buttonDelete.innerHTML = 'Delete';
-    buttonDelete.onclick = () => {
-      handleDeleteClick(task);
-    }
-    listItem.appendChild(buttonDelete);
+    const header = document.createElement('div');
+    header.classList.add('tasks-list-header')
+    listItem.appendChild(header);
 
     const checkboxIsDone = document.createElement('input');
     checkboxIsDone.setAttribute('type', 'checkbox');
@@ -31,7 +30,19 @@ const updateListView = () => {
     checkboxIsDone.onchange = () => {
       handleCheckboxChange(task);
     }
-    listItem.appendChild(checkboxIsDone);
+    header.appendChild(checkboxIsDone);
+
+    const title = document.createElement('p');
+    title.textContent = task.title;
+    header.appendChild(title);
+
+    const buttonDelete = document.createElement('button');
+    buttonDelete.innerHTML = 'Excluir';
+    buttonDelete.classList.add('button-delete')
+    buttonDelete.onclick = () => {
+      handleDeleteClick(task);
+    }
+    listItem.appendChild(buttonDelete);
 
     taskList.appendChild(listItem);
   })
@@ -74,6 +85,16 @@ const handleCheckboxChange = (targetTask) => {
   updateListView();
 }
 
+const toggleNewTaskPopUp = () => {
+  showNewTaskPopUp = !showNewTaskPopUp;
+
+  if (showNewTaskPopUp) {
+    newTaskPopUp.style.display = 'block';
+  } else {
+    newTaskPopUp.style.display = 'none';
+  }
+}
+
 const handleSubmit = (event) => {
   event.preventDefault();
 
@@ -87,10 +108,22 @@ const handleSubmit = (event) => {
     isDone: false
   }
 
-  tasks.push(newTask);
+  tasks.unshiftw(newTask);
   saveToLocalStorage();
-
+  newTaskForm.reset();
   updateListView();
+
+  toggleNewTaskPopUp();
 }
 
 newTaskForm.addEventListener('submit', handleSubmit);
+
+
+
+const handleKeyDown = (event) => {
+  if (event.keyCode === 27 && showNewTaskPopUp){
+    toggleNewTaskPopUp();
+  }
+}
+
+document.addEventListener('keydown', handleKeyDown);
