@@ -9,8 +9,13 @@ body {
   background-color: #F6F8FA;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 button {
-  background-color: red;
+  background-color: #005CC8;
   border: none;
   color: white;
   border-radius: 3px;
@@ -50,7 +55,7 @@ textarea {
 
 .header {
   align-items: center;
-  background-color: red;
+  background-color: #005CC8;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -133,7 +138,7 @@ textarea {
 }
 
 
-@media (max-width: 576) {
+@media (max-width: 576px) {
   .new-task-popup-container {
     width: auto;
   }

@@ -108,7 +108,7 @@ const handleSubmit = (event) => {
     isDone: false
   }
 
-  tasks.unshiftw(newTask);
+  tasks.unshift(newTask);
   saveToLocalStorage();
   newTaskForm.reset();
   updateListView();
